@@ -21,6 +21,8 @@ Group project: James Kaiser, Gavin Woodruff, Rylan Loukusa, and Kevin Bui – Ba
 8. **Run or Build Project**
    - Use the database management system.
 
+NOTE: To first use the system, you must manually add at least one person to the database's Employee table allowing someone to then use the GUI to have a username and password for login.
+
 ## Dependencies:
 
 - Visual Studio Community 2022 (version 17.7.2)
