@@ -1,0 +1,53 @@
+-- Create the database 
+
+CREATE DATABASE EmpPayroll; 
+
+USE EmpPayroll; 
+
+CREATE TABLE Employee ( 
+  EmployeeID INT PRIMARY KEY, 
+  DepartmentID INT,
+  firstName VARCHAR(50), 
+  lastName VARCHAR(50), 
+  accountNumber VARCHAR(50), 
+  routingNumber VARCHAR(50), 
+  Password VARCHAR(50), 
+  workPosition VARCHAR(30), 
+  Address VARCHAR(100), 
+  phoneNumber VARCHAR(100) 
+); 
+
+CREATE TABLE Department ( 
+  DepartmentID INT PRIMARY KEY, 
+  ManagerID INT, 
+  DepartmentName VARCHAR(50), 
+  FOREIGN KEY (ManagerID) REFERENCES Employee(EmployeeID) 
+); 
+
+CREATE TABLE Manager ( 
+  ManagerID INT PRIMARY KEY, 
+  firstName VARCHAR(50), 
+  lastName VARCHAR(50), 
+  DepartmentID INT, 
+  FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID), 
+  FOREIGN KEY (ManagerID) REFERENCES Employee(EmployeeID) 
+); 
+
+CREATE TABLE Payroll ( 
+  PayrollID INT PRIMARY KEY, 
+  EmployeeID INT,
+  Salary DECIMAL(10, 2), 
+  FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) 
+); 
+
+CREATE TABLE TimeCard ( 
+  PayrollID INT PRIMARY KEY, 
+  EmployeeID INT, 
+  ClockIn INT, 
+  ClockOut INT, 
+  Hours INT, 
+  FOREIGN KEY (PayrollID) REFERENCES Payroll(PayrollID), 
+  FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) 
+); 
+
+ 
